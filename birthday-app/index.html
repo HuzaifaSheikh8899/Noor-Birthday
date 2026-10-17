@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#1a0a2e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating particles layer (shared) -->
+    <div id="particles-layer" aria-hidden="true"></div>
+    <div id="confetti-layer" aria-hidden="true"></div>
+    <div id="fireworks-layer" aria-hidden="true"></div>
+
+    <!-- Music control -->
+    <button id="music-toggle" class="music-toggle" aria-label="Toggle music" title="Toggle music">🔇</button>
+
+    <!-- Progress indicator -->
+    <div id="progress-indicator" class="progress-indicator">1 / 10</div>
+
+    <!-- Hidden audio -->
+    <audio id="birthday-audio" loop preload="auto">
+        <source src="birthday-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <main id="app">
+        <!-- SCREEN 1 — MYSTERY INTRODUCTION -->
+        <section class="screen screen-dark active" data-screen="1">
+            <div class="screen-bg screen-bg-dark">
+                <div class="stars"></div>
+                <div class="floating-hearts"></div>
+                <div class="sparkles"></div>
+            </div>
+            <div class="screen-content">
+                <div class="cake-bounce">🎂</div>
+                <h1 class="title-mystery">Someone Special<br>Has a Birthday<br>Today...</h1>
+                <p class="subtitle">I made something special for you ❤️</p>
+                <button class="btn btn-primary btn-glow" data-action="next" data-confetti="true" data-start-music="true">
+                    Open Your Surprise 🎁
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 2 — BIRTHDAY REVEAL -->
+        <section class="screen screen-dark" data-screen="2">
+            <div class="screen-bg screen-bg-dark">
+                <div class="balloons-container"></div>
+                <div class="sparkles"></div>
+            </div>
+            <div class="screen-content">
+                <p class="reveal-pre">Happy Birthday,</p>
+                <h1 class="title-handwritten" id="reveal-name">BESTIE! ❤️</h1>
+                <div class="cake-bounce">🎂</div>
+                <p class="subtitle">Today is all about celebrating YOU!</p>
+                <button class="btn btn-primary btn-glow" data-action="next" data-confetti="true">
+                    Tap for a Surprise 🎁
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 3 — PERSONAL MESSAGE -->
+        <section class="screen screen-light" data-screen="3">
+            <div class="screen-bg screen-bg-light"></div>
+            <div class="screen-content">
+                <h1 class="title-light">Happy Birthday!</h1>
+                <div class="message-card glass-card">
+                    <p>To my amazing best friend,</p>
+                    <p>I hope your day is as wonderful, fun, and special as you are. You deserve all the happiness in the world.</p>
+                    <p>Thank you for being there through everything. I'm honestly so lucky to have you in my life. ❤️</p>
+                </div>
+                <div class="heart-pulse">❤️</div>
+                <button class="btn btn-pink" data-action="next">There's More ❤️</button>
+            </div>
+        </section>
+
+        <!-- SCREEN 4 — OUR MEMORIES -->
+        <section class="screen screen-light" data-screen="4">
+            <div class="screen-bg screen-bg-light"></div>
+            <div class="screen-content">
+                <h1 class="title-light">Our Memories 📸</h1>
+                <div class="polaroid-container">
+                    <div class="polaroid" id="polaroid">
+                        <img id="memory-photo" src="photos/photo1.jpg" alt="Memory photo">
+                        <p id="memory-caption" class="polaroid-caption">One of the many memories I'll always remember ❤️</p>
+                    </div>
+                </div>
+                <button class="btn btn-pink" id="next-memory-btn" data-action="next-memory">
+                    Next Memory →
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 5 — FUNNY MOMENTS -->
+        <section class="screen screen-light" data-screen="5">
+            <div class="screen-bg screen-bg-light"></div>
+            <div class="screen-content">
+                <h1 class="title-light">Our Funny Moments 😂</h1>
+                <div class="cards-stack" id="funny-cards">
+                    <div class="reveal-card">Our daily dose of gossip and unnecessary drama 🤣</div>
+                    <div class="reveal-card">When we roasted each other and called it friendship 😁</div>
+                    <div class="reveal-card">Our secrets that would shock the whole world 💀</div>
+                    <div class="reveal-card">Ignoring everyone else but replying to each other in 0.2 seconds 👀</div>
+                </div>
+                <button class="btn btn-pink" data-action="next">Keep Going ❤️</button>
+            </div>
+        </section>
+
+        <!-- SCREEN 6 — WHY YOU'RE MY BEST FRIEND -->
+        <section class="screen screen-light" data-screen="6">
+            <div class="screen-bg screen-bg-light"></div>
+            <div class="screen-content">
+                <h1 class="title-light">Why You're<br>My Best Friend ❤️</h1>
+                <div class="cards-stack" id="reason-cards">
+                    <div class="reveal-card">You make even my worst days feel better 💗</div>
+                    <div class="reveal-card">You're always there for me 👫</div>
+                    <div class="reveal-card">Life is simply more fun with you in it, Noor 💖</div>
+                    <div class="reveal-card">We can be completely crazy together 😂</div>
+                    <div class="reveal-card">And that's exactly why you're special ❤️</div>
+                </div>
+                <button class="btn btn-pink" data-action="next">One More →</button>
+            </div>
+        </section>
+
+        <!-- SCREEN 7 — FRIENDSHIP QUOTE -->
+        <section class="screen screen-quote" data-screen="7">
+            <div class="screen-bg screen-bg-quote">
+                <div class="sparkles"></div>
+            </div>
+            <div class="screen-content">
+                <h1 class="title-quote">A Little Quote For You ✨</h1>
+                <div class="quote-card">
+                    <span class="quote-mark">"</span>
+                    <p class="quote-text">Good friends are like stars. You don't always see them, but you know they're always there.</p>
+                    <span class="quote-mark quote-mark-end">"</span>
+                </div>
+                <button class="btn btn-pink" data-action="next">Continue ❤️</button>
+            </div>
+        </section>
+
+        <!-- SCREEN 8 — MY WISH FOR YOU -->
+        <section class="screen screen-light" data-screen="8">
+            <div class="screen-bg screen-bg-light"></div>
+            <div class="screen-content">
+                <h1 class="title-light">My Wish For You 💖</h1>
+                <div class="wishes-list" id="wishes-list">
+                    <div class="wish-item">✨ More happiness</div>
+                    <div class="wish-item">✨ More success</div>
+                    <div class="wish-item">✨ More adventures</div>
+                    <div class="wish-item">✨ More unforgettable memories</div>
+                    <div class="wish-item">✨ And all your dreams coming true!</div>
+                </div>
+                <p class="wish-footer">Keep smiling always, just the way you do! 😊</p>
+                <button class="btn btn-pink" data-action="next">I Have One Last Thing...</button>
+            </div>
+        </section>
+
+        <!-- SCREEN 9 — INTERACTIVE GIFT -->
+        <section class="screen screen-dark" data-screen="9">
+            <div class="screen-bg screen-bg-dark">
+                <div class="sparkles"></div>
+            </div>
+            <div class="screen-content">
+                <h1 class="title-gift">One Last Thing...</h1>
+                <div class="gift-box" id="gift-box" role="button" tabindex="0" aria-label="Open your gift">
+                    <span class="gift-emoji">🎁</span>
+                    <span class="gift-lid" id="gift-lid"></span>
+                </div>
+                <p class="subtitle">There's one final surprise waiting for you.</p>
+                <button class="btn btn-primary btn-glow" id="open-gift-btn" data-action="open-gift">
+                    Open Your Gift 💖
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 10 — FINAL EMOTIONAL MESSAGE -->
+        <section class="screen screen-final" data-screen="10">
+            <div class="screen-bg screen-bg-final">
+                <div class="stars"></div>
+                <div class="floating-hearts"></div>
+                <div class="sparkles"></div>
+            </div>
+            <div class="screen-content">
+                <div class="heart-pulse heart-large">❤️</div>
+                <h1 class="title-final" id="final-name">Happy Birthday,<br>BESTIE! 🎂</h1>
+                <div class="final-message glass-card-dark">
+                    <p>No matter how much we grow up, I hope our friendship always stays exactly the same.</p>
+                    <p>Thank you for being one of the best parts of my life.</p>
+                    <p>Stay happy.<br>Stay crazy.<br>Stay with me. 💗</p>
+                    <p class="final-bday">❤️ Happy Birthday! ❤️</p>
+                </div>
+                <button class="btn btn-primary btn-glow btn-celebrate" id="celebrate-btn" data-action="celebrate">
+                    Let's Celebrate! 🎉
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
